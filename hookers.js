@@ -16,21 +16,42 @@ class product {
                 return shoppingCart;
             };
         };
-        shoppingCart.push({
-            item : this ,
-            quantity : 1
-        });
+        shoppingCart.push(
+            new order(this, 1)
+        );
         
         return shoppingCart;
     };
 };
 
-let shoppingCart = [];
+class order {
+    constructor(item, quantity){
+        this.item = item;
+        this.quantity = quantity;
+    };
+};
 
-shoppingCart.push({
-    item : new product("hook1", "hooks", 50, "hook1.png") ,
-    quantity : 1 
-});
+
+const shoppingCart = [];
+
+function purchaseCart(customCart) {
+    let cart = customCart || shoppingCart;
+    console.log(cart);
+    
+    for (i = 0; i < cart.length; i++) {
+        let item = cart[i].item;
+        let quantity = cart[i].quantity;
+        
+        let price = item.price * quantity;
+        console.log(price);
+        
+        let name = item.name;
+        let url = item.image;
+    };
+    
+};
+
+
 
 
 let hook1 = new product("hook1", "hooks", 50, "hook1.png");
