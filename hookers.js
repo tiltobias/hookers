@@ -60,7 +60,7 @@ function purchaseCart(customCart) {
 const stock = {};
 stock.hook1 = new product("Klassisk Krok", "Kroker", 10, "productImages/Krok.png");
 stock.hook = new product("hook", "hooks", 60, "hook2.png");
-stock.rod = new product("Isfiske Drill", "Isfiske", 5999, "productImages/Drill.png");
+stock.rod = new product("Isfiske Drill", "Annet", 5999, "productImages/Drill.png");
 
 
 
