@@ -58,9 +58,9 @@ function purchaseCart(customCart) {
 
 //--------------------- Lagrer alle butikkens produkter i ett objekt, slik at dette er letter å finne spesifike produkter enn i en array, og mer oversiktlig enn bare som individuelle variabler. ---
 const stock = {};
-stock.hook1 = new product("hook1", "hooks", 50, "hook1.png");
-stock.hook2 = new product("hook2", "hooks", 60, "hook2.png");
-stock.rod = new product("Fishingrod", "rods", 200, "rod.png");
+stock.hook1 = new product("Klassisk Krok", "Kroker", 10, "productImages/Krok.png");
+stock.hook = new product("hook", "hooks", 60, "hook2.png");
+stock.rod = new product("Isfiske Drill", "Isfiske", 5999, "productImages/Drill.png");
 
 
 
