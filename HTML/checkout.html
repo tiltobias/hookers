@@ -39,43 +39,47 @@
         </nav>
     </header>
     <section>
-        <h1>Cart</h1>
+        <h1>Handleliste</h1>
         <div class="row">
             <div class="column">
-                <h1>Your Order</h1>
-                <h5>Please select the quantity below</h5>
-                <div class="cart-item" id="item">
-                    <img src="../Images/img-Nike1.jpg" alt="" />
-                    <p>Nike Air Max (Red)</p>
-                    <p>$399.90</p>
-                    <input type="number" name="quantity" id="no-of-items" value="1" min="1" max="6" step="1" />
-                    <button id="remove" class="remove">
-                        <i class="fas fa-trash fa-2x"></i>
-                    </button>
+                <h1>Din bestilling</h1>
+                <!--<h5>Please select the quantity below</h5>-->
+                <div id="cartContainer">
+                    <!--<div class="cart-item" id="item">
+                        <img src="../Images/img-Nike1.jpg" alt="" />
+                        <p>Nike Air Max (Red)</p>
+                        <p>$399.90</p>
+                        <input type="number" name="quantity" id="no-of-items" value="1" min="1" max="6" step="1" />
+                        <button id="remove" class="remove">
+                            <i class="fas fa-trash fa-2x"></i>
+                        </button>
+                    </div>
+                    <div class="cart-item" id="item1">
+                        <img src="../Images/img-Nike4.jpg" alt="" />
+                        <p>Nike Air Max (Pink)</p>
+                        <p>$299.90</p>
+                        <input type="number" name="quantity" id="no-of-items" value="1" min="1" max="6" step="1" />
+                        <button id="remove2" class="remove">
+                            <i class="fas fa-trash fa-2x"></i>
+                        </button>
+                    </div>
+                    <div class="cart-item" id="item2">
+                        <img src="../Images/img-Nike3.jpg" alt="" />
+                        <p>Nike Air Max (Blue)</p>
+                        <p>$199.90</p>
+                        <input type="number" name="quantity" id="no-of-items" value="1" min="1" max="6" step="1" />
+                        <button id="remove3" class="remove">
+                            <i class="fas fa-trash fa-2x"></i>
+                        </button>
+                    </div>-->
+                    
                 </div>
-                <div class="cart-item" id="item1">
-                    <img src="../Images/img-Nike4.jpg" alt="" />
-                    <p>Nike Air Max (Pink)</p>
-                    <p>$299.90</p>
-                    <input type="number" name="quantity" id="no-of-items" value="1" min="1" max="6" step="1" />
-                    <button id="remove2" class="remove">
-                        <i class="fas fa-trash fa-2x"></i>
-                    </button>
-                </div>
-                <div class="cart-item" id="item2">
-                    <img src="../Images/img-Nike3.jpg" alt="" />
-                    <p>Nike Air Max (Blue)</p>
-                    <p>$199.90</p>
-                    <input type="number" name="quantity" id="no-of-items" value="1" min="1" max="6" step="1" />
-                    <button id="remove3" class="remove">
-                        <i class="fas fa-trash fa-2x"></i>
-                    </button>
-                </div>
+                
                 <hr />
             </div>
             <div class="column2">
-                <h3>Cart Totals</h3>
-                <div class="row1">
+                <h3>Prissum</h3>
+                <!--<div class="row1">
                     <div class="col">
                         <h5>Subtotals</h5>
                         <h5>Shipping</h5>
@@ -98,15 +102,19 @@
                                 will be updated <br />during checkout.</span>
                         </div>
                     </div>
-                </div>
-                <h3>Totals &nbsp; &nbsp; $1000</h3>
+                </div>-->
+                <h3>Totals &nbsp; &nbsp; <span id="totalPrice"></span></h3>
                 <div class="buttons">
-                    <a class="button-checkout" href="confirmation.html">Checkout</a>
-                    <a class="cancel" href="../HTML/men.html">Continue Shopping</a>
+                    <a class="button-checkout" href="confirmation.html">Bekreft kjøp</a>
+                    <a class="cancel" href="../HTML/Kroker.html">Fortsett å handle</a>
                 </div>
             </div>
         </div>
     </section>
+<script src="../hookers.js"></script>
+<script>
+    loadShoppingCart();
+</script>
 </body>
 
 </html>
