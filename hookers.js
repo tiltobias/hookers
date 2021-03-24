@@ -34,10 +34,19 @@ class order {
     };
 };
 
+let shoppingCart = [];
 
-const shoppingCart = [];
+//--------------------------------- Shortcut funksjoner for å lagre handlelista til nettleseren -----
+function storeShoppingCart() {
+    sessionStorage.setItem("shoppingCart", JSON.stringify(shoppingCart));
+};
+function fetchShoppingCart() {
+    shoppingCart = JSON.parse(sessionStorage.getItem("shoppingCart"));
+};
 
-//------------------------ 
+
+
+/*
 function purchaseCart(customCart) {
     let cart = customCart || shoppingCart;
     console.log(cart);
@@ -53,7 +62,112 @@ function purchaseCart(customCart) {
         let url = item.image;
     };
     
+};*/
+
+
+
+
+
+function addBtnEventlisteners() {
+    let btns = document.querySelectorAll(".card p button");
+    
+    btns.forEach(function(e){e.addEventListener("click", function(e){addToCart(e)})});
+    
+    
 };
+
+addBtnEventlisteners()
+
+
+
+function addToCart(e) {
+    fetchShoppingCart();
+    
+    let card = e.srcElement.parentElement.parentElement;
+    
+    let name = card.querySelector("h3").innerHTML;
+    let price = card.querySelector(".price").innerHTML;
+    let image = card.querySelector("img").getAttribute("src");
+    
+    let item = new product(name,"",price,image);
+    /*
+    for (let i = 0; i < shoppingCart.length; i++) {
+        if (shoppingCart[i].item === item) {
+            shoppingCart[i].quantity++;
+            return shoppingCart;
+        };
+    };*/
+    shoppingCart.push(
+        new order(item, 1)
+    );
+    
+    storeShoppingCart();
+};
+
+
+function loadShoppingCart() {
+    const cont = document.getElementById("cartContainer");
+    fetchShoppingCart();
+    
+    //--------------------------------------------------- Loopen lager hver bestilling, og alle elementene i hver av dem ------------
+    for (i = 0; i < shoppingCart.length; i++) {
+        let data = shoppingCart[i];
+        
+        let item = document.createElement("div");
+        item.classList.add("cart-item");
+        
+        let img = document.createElement("img");
+        img.setAttribute("src", data.item.image);
+        item.appendChild(img);
+        
+        let name = document.createElement("p");
+        name.innerHTML = data.item.name;
+        name.classList.add("cartItemName")
+        item.appendChild(name);
+        
+        let price = document.createElement("p");
+        price.innerHTML = data.item.price;
+        price.classList.add("cartItemPrice");
+        item.appendChild(price);
+        
+        item.innerHTML += `<input type="number" name="quantity" id="no-of-items" value="${data.quantity}" min="1" max="6" step="1">`;
+        item.innerHTML += `<button class="remove"><i class="fas fa-trash fa-2x"></i></button>`;
+        
+        item.querySelector("button.remove").addEventListener("click", function(e){
+            for (let i = 0; i < shoppingCart.length; i++) {
+                if (shoppingCart[i].item.name === item.querySelector(".cartItemName").innerHTML ) {
+                    shoppingCart.splice(i, 1);
+                    storeShoppingCart();
+                };
+            };
+            item.remove();
+            printTotalPrice();
+        });     
+        
+        cont.appendChild(item);
+    };
+    
+    printTotalPrice();
+};
+
+
+function printTotalPrice() {
+    const priceCont = document.getElementById("totalPrice");
+    const cont = document.getElementById("cartContainer");
+    
+    let prices = cont.querySelectorAll(".cartItemPrice");
+    let totalPrice = 0;
+    
+    for (i = 0; i < prices.length; i++) {
+        totalPrice += Number(prices[i].innerHTML.replace("kr", "").split(" ").join(""));
+    };
+    priceCont.innerHTML = totalPrice + " kr";
+};
+
+
+
+
+
 
 
 //--------------------- Lagrer alle butikkens produkter i ett objekt, slik at dette er letter å finne spesifike produkter enn i en array, og mer oversiktlig enn bare som individuelle variabler. ---
