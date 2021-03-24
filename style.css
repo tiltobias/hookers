@@ -20,7 +20,7 @@ header {
 
 @media (max-width: 600px) {
   header {
-    background-image: url("Images/nike-bg-5.gif");
+    background-image: url("Images/Fishing.gif");
     background-attachment: scroll;
   }
 }
