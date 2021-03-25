@@ -48,6 +48,6 @@ nav>ul>li {
   }
   
   nav>ul>li>a:hover {
-    color: #cb4335;
+    color: deepskyblue;
     transition: .7s ease;
   }
