@@ -41,7 +41,10 @@ function storeShoppingCart() {
     sessionStorage.setItem("shoppingCart", JSON.stringify(shoppingCart));
 };
 function fetchShoppingCart() {
-    shoppingCart = JSON.parse(sessionStorage.getItem("shoppingCart"));
+    let storedCart = JSON.parse(sessionStorage.getItem("shoppingCart"));
+    if (storedCart) {
+        shoppingCart = storedCart;
+    };
 };
 
 
@@ -97,9 +100,8 @@ function addToCart(e) {
             return shoppingCart;
         };
     };*/
-    shoppingCart.push(
-        new order(item, 1)
-    );
+    console.log(item);
+    shoppingCart.push(new order(item, 1));
     
     storeShoppingCart();
 };
