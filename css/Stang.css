@@ -84,11 +84,13 @@ img {
   border-radius: 16px;
   text-decoration: none;
   border: none;
-  display: inline-block;
   box-sizing: border-box;
   width: 4.5em;
   text-align: center;
   height: 2em;
+  float: left;
+  --gap: 0.5rem;
+  margin-left: var(--gap);
 }
 
 .card a:hover,
