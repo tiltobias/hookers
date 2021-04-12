@@ -7,6 +7,10 @@ html {
   overflow-x: hidden;
 }
 
+body {
+  margin: 0;
+}
+
 nav {
   position: relative !important;
   overflow: auto;
@@ -20,16 +24,6 @@ nav {
 .row {
   display: flex;
   flex-direction: row;
-}
-
-.col {
-  width: 10%;
-  margin-right: 40px;
-  background: whitesmoke;
-  padding: 30px;
-  position: fixed;
-  left: 0px;
-  top: 100px;
 }
 
 .col2 {
@@ -56,12 +50,12 @@ img {
   margin: 15px;
 }
 
-.card>h3 {
+.card > h3 {
   margin: 0;
   padding: 0;
 }
 
-.card>p {
+.card > p {
   margin: 0;
   padding: 5px;
   font-size: 15px;
@@ -79,7 +73,8 @@ img {
   justify-content: center;
 }
 
-.card a, .card button {
+.card a,
+.card button {
   padding: 6px 15px 6px 15px;
   color: white;
   background-color: #000;
@@ -96,13 +91,14 @@ img {
   height: 2em;
 }
 
-.card a:hover, .card button:hover {
+.card a:hover,
+.card button:hover {
   background-color: white;
   color: #000;
   border: 1px solid black;
 }
 
-.card>img {
+.card > img {
   height: 200px;
   object-fit: cover;
 }
@@ -134,4 +130,61 @@ input {
   .col2 {
     padding: 0;
   }
+}
+.foot {
+  margin: 0 10% 0 10%;
+}
+
+.col {
+  width: 50%;
+  padding: 40px 20px 40px 20px;
+}
+
+/* Beskriver Footer*/
+footer {
+  background-color: #1b212b;
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+.col > ul > li > a {
+  color: white;
+  text-decoration: none;
+  margin: 0;
+}
+
+.col > ul > li {
+  list-style-type: none;
+}
+
+.col > ul > li > a:hover {
+  color: brown;
+}
+
+.col > ul {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: cadetblue;
+  text-decoration: none;
+}
+
+figcaption {
+  text-align: center;
+  color: #000;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.item > a > img {
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.6);
+  border-radius: 7px;
+}
+
+.item:hover {
+  filter: brightness(50%);
+  transition: 0.5s ease;
 }
