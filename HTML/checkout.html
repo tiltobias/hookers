@@ -1,73 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Checkout</title>
-        <!-- Ikonet til nettsiden -->
+    <!-- Ikonet til nettsiden -->
     <link rel="shortcut icon" type="image/x-icon" href="../Images/logo.jpg" />
-        <!-- Linker til Checkoutstylesheet -->
+    <!-- Linker til Checkoutstylesheet -->
     <link rel="stylesheet" href="../css/checkout.css" />
-        <!-- Linker til Google fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet" />
-        <!-- Linker til font -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />
-    
-</head>
+    <!-- Linker til Google fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Linker til font -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+      integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+      crossorigin="anonymous"
+    />
+  </head>
 
-<body>
-    
-        <!-- Header -->
+  <body>
+    <!-- Header -->
     <header>
-        <nav>
-            <ul>
-                <li class="primary-nav">
-                    <img src="../Images/logo.jpg" alt="logo" />
-                    <a href="../index.html">HOOKERS</a>
-                </li>
-                <li class="secondary-nav">
-                    <a href="../HTML/checkout.html">
-                        <i class="fas fa-shopping-cart"></i> HANDLEVOGN
-                    </a>
-                </li>
-                <li class="secondary-nav"><a href="../HTML/Sneller.html">SNELLER</a></li>
-                <li class="secondary-nav"><a href="../HTML/Stenger.html">STENGER</a></li>
-                <li class="secondary-nav">
-                    <a href="../HTML/Kroker.html">KROKER</a>
-                </li>
-            </ul>
-        </nav>
+      <nav>
+        <ul>
+          <li class="primary-nav">
+            <img src="../Images/logo.jpg" alt="logo" />
+            <a href="../index.html">HOOKERS</a>
+          </li>
+          <li class="secondary-nav">
+            <a href="../HTML/checkout.html">
+              <i class="fas fa-shopping-cart"></i> HANDLEVOGN
+            </a>
+          </li>
+          <li class="secondary-nav">
+            <a href="../HTML/Sneller.html">SNELLER</a>
+          </li>
+          <li class="secondary-nav">
+            <a href="../HTML/Stenger.html">STENGER</a>
+          </li>
+          <li class="secondary-nav">
+            <a href="../HTML/Kroker.html">KROKER</a>
+          </li>
+        </ul>
+      </nav>
     </header>
-    
-        <!-- Oversikt over alle produktene i handlelista, samt totalpris, "bekreft kjøp"-knapp og "fortsett å handle"-knapp -->
-    <section>
-        <h1>Handleliste</h1>
-        <div class="row">
-            <div class="column">
-                <h1>Din bestilling</h1>
-                
-                <div id="cartContainer">
-                    
-                </div>
-                
-            </div>
-            <div class="column2">
-                <h3>Prissum</h3>
-                
-                <h3>Totalpris &nbsp; &nbsp; <span id="totalPrice"></span></h3>
-                <div class="buttons">
-                    <a class="button-checkout" href="confirmation.html">Bekreft kjøp</a>
-                    <a class="cancel" href="../HTML/Kroker.html">Fortsett å handle</a>
-                </div>
-            </div>
-        </div>
-    </section>
-<script src="../hookers.js"></script>
-<script>
-    loadShoppingCart();
-</script>
-</body>
 
+    <!-- Oversikt over alle produktene i handlelista, samt totalpris, "bekreft kjøp"-knapp og "fortsett å handle"-knapp -->
+    <section>
+      <h1>Handleliste</h1>
+      <div class="row">
+        <div class="column">
+          <h1>Din bestilling</h1>
+
+          <div id="cartContainer"></div>
+        </div>
+        <div class="column2">
+          <h3>Prissum</h3>
+
+          <h3>Totalpris &nbsp; &nbsp; <span id="totalPrice"></span></h3>
+          <div class="buttons">
+            <a class="button-checkout" href="confirmation.html">Bekreft kjøp</a>
+            <a class="cancel" href="../HTML/Kroker.html">Fortsett å handle</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <footer>
+      <div class="row foot">
+        <div class="col">
+          <h1>HOOKERS</h1>
+          <p>
+            Offisiell
+            <a href="https://web.trondelagfylke.no/heimdal-videregaende-skole"
+              >Heimdal</a
+            >
+            Partner
+          </p>
+        </div>
+        <div class="col">
+          <h2>Linker</h2>
+          <ul>
+            <li><a href="./Kontakt-oss.html">Kontakt Oss</a></li>
+            <li>
+              <a href="./Vilkar-og-betingelser.html">Vilkår og Betingelser</a>
+            </li>
+            <li>
+              <a href="./Angrerett.html">Angrerett</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+    <script src="../hookers.js"></script>
+    <script>
+      loadShoppingCart();
+    </script>
+  </body>
 </html>
