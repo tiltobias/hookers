@@ -62,7 +62,7 @@ function purchaseCart(customCart) {
 
 //-------------------- gir alle "kjøp" knappene eventlistener som ved klikk kjører funksjonen "addToCart", sender også med parameteret "e" slik at funksjonen kan target-e det aktuelle produktet
 function addBtnEventlisteners() {
-  let btns = document.querySelectorAll(".buy");
+  let btns = document.querySelectorAll(".card span button.buy");
 
   btns.forEach(function (e) {
     e.addEventListener("click", function (e) {
