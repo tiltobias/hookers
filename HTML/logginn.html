@@ -17,11 +17,8 @@
         <!-- Linker til font -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />
     
-    <style>
-        .hidden {
-            display: none;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="../css/logginn.css">
+    
 </head>
 
 <body>
@@ -49,26 +46,35 @@
     <main>
         <div id="formContainer">
             <form id="formLogin">
+                <h3>Logg inn</h3>
                 <div class="inpContainer">
                     <input id="inpUsername" type="text" placeholder="Brukernavn">
+                    <p id="loginFeedback" class="feedbackTxt"> </p>
                     <input id="inpPassword" type="password" placeholder="Passord">
                 </div>
-                <p id="loginFeedback"> </p>
                 
-                <input id="inpLogin" type="submit" value="Logg inn" disabled>
-                <input id="btnSwapFormLogin" type="button" value="Har du ikke bruker?">
+                <div class="formBottom">
+                    <input id="inpLogin" type="submit" value="Logg inn" disabled>
+                    <input id="btnSwapFormLogin" type="button" value="Har du ikke bruker?" class="btnFormSwap">
+                </div>
             </form>
             <form id="formCreate" class="hidden">
+                <h3>Lag deg en bruker</h3>
                 <div class="inpContainer">
                     <input id="crtUName" type="text" placeholder="Epost / Brukernavn">
+                    <p id="usernameFeedback" class="feedbackTxt"></p>
+                    
                     <input id="crtPw1" type="password" placeholder="Passord">
+                    <p id="passwordFeedback" class="feedbackTxt"> </p>
                     <input id="crtPw2" type="password" placeholder="Gjenta passord">
                 </div>
-                <p id="usernameFeedback"></p>
-                <p id="passwordFeedback"> </p>
                 
-                <input id="crtCreate" type="submit" value="Lag bruker" disabled>
-                <input id="btnSwapFormCreate" type="button" value="Har allerede bruker.">
+                
+                
+                <div class="formBottom">
+                    <input id="crtCreate" type="submit" value="Lag bruker" disabled>
+                    <input id="btnSwapFormCreate" type="button" value="Har allerede bruker." class="btnFormSwap">
+                </div>
             </form>
             
             <p id="txtSignIn"></p>
@@ -214,13 +220,13 @@
         if (checkUsernameAvailable()) {
             usernameFeedback.innerHTML = "";
         } else {
-            usernameFeedback.innerHTML = "Username taken.";
+            usernameFeedback.innerHTML = "Brukernavn opptatt.";
         };
     };
 
     function checkPasswordFeedback() {
         if (crtPw1.value !== crtPw2.value) {
-            passwordFeedback.innerHTML = "Passwords don't match.";
+            passwordFeedback.innerHTML = "Ulike passord.";
         } else {
             passwordFeedback.innerHTML = "";
         };
@@ -246,10 +252,10 @@
                 username : crtUName.value , 
                 password : crtPw1.value 
             });
-            window.alert("New Account Created!");
+            window.alert("Ny bruker laget!");
             formCreate.reset();
         } else {
-            window.alert("Could not create account.");
+            window.alert("Feil under laging av bruker.");
         };
     };
     
