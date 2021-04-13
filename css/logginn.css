@@ -1,0 +1,83 @@
+
+.hidden {
+    display: none;
+}
+
+body {
+    height: 100vh;
+}
+
+main {
+    min-height: 500px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#formContainer {
+    display: inline-block;
+    width: 20em;
+}
+
+#formLogin, 
+#formCreate {
+    padding: 20px;
+    font-size: 20px;
+    
+}
+
+.inpContainer input {
+    display: block;
+    width: 100%;
+    font-size: inherit;
+    border: none;
+    border-bottom: 2px solid black;
+    background: none;
+    outline: none;
+    box-sizing: border-box;
+    padding: 2px 0;
+    margin: 0;
+}
+.inpContainer input:focus {
+    border-bottom: 3px solid black;
+}
+
+.feedbackTxt {
+    color: red; 
+    height: 1em;
+    margin: 5px;
+}
+
+.formBottom {
+    display: flex;
+    margin-top: 30px;
+    height: 2.5em;
+}
+.formBottom input {
+    flex-grow: 1;
+    margin: 5px;
+    background-color: black;
+    color: white;
+    border-radius: 1.5em;
+    font-size: 20px;
+    cursor: pointer;
+    border: 3px solid black;
+    outline: none;
+}
+
+.formBottom input.btnFormSwap {
+    flex-grow: 0;
+    font-size: 12px;
+}
+.formBottom input:hover, .formBottom input:focus {
+    background: none;
+    color: black;
+}
+input[type="submit"]:disabled {
+    background-color: grey;
+    border-color: grey;
+    color: white;
+    cursor: default;
+}
