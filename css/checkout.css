@@ -209,3 +209,10 @@ figcaption {
   filter: brightness(50%);
   transition: 0.5s ease;
 }
+
+#txtSignIn {
+  display: inline;
+  margin: 0;
+  text-transform: uppercase;
+}
+
