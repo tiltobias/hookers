@@ -33,7 +33,8 @@ let shoppingCart = [];
 
 //--------------------------------- Shortcut funksjoner for å lagre handlelista lokalt i nettleseren - Nødvendig for at handlelista skal overføres mellom html-filene.
 function storeShoppingCart() {
-  sessionStorage.setItem("shoppingCart", JSON.stringify(shoppingCart));
+    sessionStorage.setItem("shoppingCart", JSON.stringify(shoppingCart));
+    uploadShoppingCart();
 }
 function fetchShoppingCart() {
   let storedCart = JSON.parse(sessionStorage.getItem("shoppingCart"));
@@ -161,6 +162,50 @@ function printTotalPrice() {
   }
   priceCont.innerHTML = totalPrice + " kr";
 }
+
+
+//----------------------------------------------------------- INNLOGGING RELATERTE FUNKSJONER---------------
+
+function checkSignIn() {
+    let localUserInfo = JSON.parse(sessionStorage.getItem("userInfo"));
+    if (localUserInfo) {
+        userInfo = localUserInfo;
+        txtSignIn.innerHTML = userInfo.username;
+    };
+};
+checkSignIn();
+
+
+
+let dbUser = db.ref("userAccounts/" + userInfo.username);
+
+function uploadShoppingCart() {
+    if (userInfo.username) {
+        dbUser = db.ref("userAccounts/" + userInfo.username);
+    
+        let newObject = dbUser.child("shoppingCart");
+        newObject.set(JSON.stringify(shoppingCart));
+    };
+};
+
+function downloadShoppingCart() {
+    function getUserInfoHelper(snapshot) {
+        if (snapshot.key === userInfo.username) {
+            usernameExists = true;
+            userInfo = snapshot.val();
+        };
+    };
+    dbUserAccounts.on("child_added", getUserInfoHelper);
+    
+    if (userInfo.shoppingCart) {
+        shoppingCart = JSON.parse(userInfo.shoppingCart);
+    };
+    return shoppingCart;
+};
+downloadShoppingCart();
+
+
+//------------ Produktinfo --------------------------
 
 const openModalButtons = document.querySelectorAll("[data-modal-target]");
 const closeModalButtons = document.querySelectorAll("[data-close-button]");
