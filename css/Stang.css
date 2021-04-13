@@ -257,3 +257,14 @@ figcaption {
   opacity: 1;
   pointer-events: all;
 }
+
+#txtSignIn {
+  display: inline;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+
+
+
+
