@@ -162,7 +162,22 @@ function loadShoppingCart() {
 }
 
 //----------------------------- Egen funksjon som summerer prisene på alle produktene i handlelista, slik summen kan oppdateres uten å gjenta mye kode.
+
 function printTotalPrice() {
+    const priceCont = document.getElementById("totalPrice");
+    let total = 0;
+    
+    for (i = 0; i < shoppingCart.length; i++){
+        let itemPrice = shoppingCart[i].item.price.replace("kr", "").split(" ").join("");
+        
+        total += +itemPrice * +shoppingCart[i].quantity;
+    };
+    
+    priceCont.innerHTML = total + " kr";
+};
+
+//--------------------------------- Tidligere versjon av funksjonen som ikke regnet med kvantitet.----------------------
+/*function printTotalPrice() {
   const priceCont = document.getElementById("totalPrice");
   const cont = document.getElementById("cartContainer");
 
@@ -175,7 +190,8 @@ function printTotalPrice() {
     );
   }
   priceCont.innerHTML = totalPrice + " kr";
-}
+}*/
+
 
 
 //----------------------------------------------------------- INNLOGGING RELATERTE FUNKSJONER---------------
