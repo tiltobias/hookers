@@ -1,3 +1,43 @@
+//------------ Popup til Produktinfo --------------------------
+
+const openModalButtons = document.querySelectorAll("[data-modal-target]");
+const closeModalButtons = document.querySelectorAll("[data-close-button]");
+const overlay = document.getElementById("overlay");
+
+openModalButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const modal = button.parentNode.querySelector("#modal");
+    openModal(modal);
+  });
+});
+
+overlay.addEventListener("click", () => {
+  const modals = document.querySelectorAll(".modal.active");
+  modals.forEach((modal) => {
+    closeModal(modal);
+  });
+});
+
+closeModalButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const modal = button.closest(".modal");
+    closeModal(modal);
+  });
+});
+
+function openModal(modal) {
+  if (modal == null) return;
+  modal.classList.add("active");
+  overlay.classList.add("active");
+}
+
+function closeModal(modal) {
+  if (modal == null) return;
+  modal.classList.remove("active");
+  overlay.classList.remove("active");
+}
+
+
 //-------------------- definerer klasse for hvert produkt som selges i butikken, slik at hvert objekt ser likt ut -----------------
 class product {
   constructor(name, category, price, image) {
@@ -234,45 +274,6 @@ function downloadShoppingCart() {
 };
 downloadShoppingCart();
 
-
-//------------ Produktinfo --------------------------
-
-const openModalButtons = document.querySelectorAll("[data-modal-target]");
-const closeModalButtons = document.querySelectorAll("[data-close-button]");
-const overlay = document.getElementById("overlay");
-
-openModalButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    const modal = button.parentNode.querySelector("#modal");
-    openModal(modal);
-  });
-});
-
-overlay.addEventListener("click", () => {
-  const modals = document.querySelectorAll(".modal.active");
-  modals.forEach((modal) => {
-    closeModal(modal);
-  });
-});
-
-closeModalButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    const modal = button.closest(".modal");
-    closeModal(modal);
-  });
-});
-
-function openModal(modal) {
-  if (modal == null) return;
-  modal.classList.add("active");
-  overlay.classList.add("active");
-}
-
-function closeModal(modal) {
-  if (modal == null) return;
-  modal.classList.remove("active");
-  overlay.classList.remove("active");
-}
 
 //--------------------- Lagrer alle butikkens produkter i ett objekt, slik at dette er letter å finne spesifike produkter enn i en array, og mer oversiktlig enn bare som individuelle variabler. ---
 /* ------------------ Vi valgte heller å legge inn produktene i html og lagde en egen funksjon for å hente denne dataen. Beholder koden i tilfelle det kan bli brukt i sprint 2.
