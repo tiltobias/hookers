@@ -243,7 +243,7 @@ const overlay = document.getElementById("overlay");
 
 openModalButtons.forEach((button) => {
   button.addEventListener("click", () => {
-    const modal = document.querySelector(button.dataset.modalTarget);
+    const modal = button.parentNode.querySelector("#modal");
     openModal(modal);
   });
 });
