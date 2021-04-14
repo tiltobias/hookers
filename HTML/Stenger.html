@@ -35,9 +35,10 @@
           <a href="../index.html">HOOKERS</a>
         </li>
         <li class="secondary-nav">
-            <a href="../HTML/logginn.html">
-                <i class="fas fa-user"></i> <p id="txtSignIn">LOGG INN</p>
-            </a>
+          <a href="../HTML/logginn.html">
+            <i class="fas fa-user"></i>
+            <p id="txtSignIn">LOGG INN</p>
+          </a>
         </li>
         <li class="secondary-nav">
           <a href="../HTML/checkout.html">
@@ -52,6 +53,9 @@
         </li>
         <li class="secondary-nav">
           <a href="../HTML/Kroker.html">KROKER</a>
+        </li>
+        <li class="secondary-nav">
+          <a href="../HTML/Fornøyd.html">FORNØYDE KUNDER</a>
         </li>
       </ul>
     </nav>
@@ -424,32 +428,32 @@
         </div>
       </div>
     </footer>
-    
+
     <!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-analytics.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-database.js"></script>
-<script>
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  var firebaseConfig = {
-    apiKey: "AIzaSyDyy-B2MxagAB15z_eqY0W2m2c9bjfTKxk",
-    authDomain: "hookers-230c3.firebaseapp.com",
-    databaseURL: "https://hookers-230c3-default-rtdb.firebaseio.com",
-    projectId: "hookers-230c3",
-    storageBucket: "hookers-230c3.appspot.com",
-    messagingSenderId: "719318479999",
-    appId: "1:719318479999:web:eca5ff45e16b666fc7fb4a",
-    measurementId: "G-PPPMCV20NF"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
-    
-    const db = firebase.database();
-    const dbUserAccounts = db.ref("userAccounts");
-</script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-database.js"></script>
+    <script>
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      var firebaseConfig = {
+        apiKey: "AIzaSyDyy-B2MxagAB15z_eqY0W2m2c9bjfTKxk",
+        authDomain: "hookers-230c3.firebaseapp.com",
+        databaseURL: "https://hookers-230c3-default-rtdb.firebaseio.com",
+        projectId: "hookers-230c3",
+        storageBucket: "hookers-230c3.appspot.com",
+        messagingSenderId: "719318479999",
+        appId: "1:719318479999:web:eca5ff45e16b666fc7fb4a",
+        measurementId: "G-PPPMCV20NF",
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+
+      const db = firebase.database();
+      const dbUserAccounts = db.ref("userAccounts");
+    </script>
     <script src="../hookers.js"></script>
   </body>
 </html>
