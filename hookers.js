@@ -75,26 +75,28 @@ addBtnEventlisteners();
 
 //------------------- Funksjonen finner hele produktet ved å gå utover i nestinga fra knappen. Finner dermed aktuell info om produktet ut i fra text-nodene til de forskjellige barnene.
 function addToCart(e) {
-  fetchShoppingCart();
+    fetchShoppingCart();
 
-  let card = e.srcElement.parentElement.parentElement;
+    let card = e.srcElement.parentElement.parentElement;
 
-  let name = card.querySelector("h3").innerHTML;
-  let price = card.querySelector(".price").innerHTML;
-  let image = card.querySelector("img").getAttribute("src");
+    let name = card.querySelector("h3").innerHTML;
+    let price = card.querySelector(".price").innerHTML;
+    let image = card.querySelector("img").getAttribute("src");
 
-  let item = new product(name, "", price, image);
-  /*
+    let item = new product(name, "", price, image);
+  
     for (let i = 0; i < shoppingCart.length; i++) {
-        if (shoppingCart[i].item === item) {
+        if (shoppingCart[i].item.name === item.name) {
             shoppingCart[i].quantity++;
+            
+            storeShoppingCart();
             return shoppingCart;
         };
-    };*/
-  console.log(item);
-  shoppingCart.push(new order(item, 1));
+    };
+    console.log(item);
+    shoppingCart.push(new order(item, 1));
 
-  storeShoppingCart();
+    storeShoppingCart();
 }
 
 //------------------------------- Funksjonen skal kjøre når handlelista åpnes, slik at den oppdateres med riktige produkter.
@@ -123,9 +125,20 @@ function loadShoppingCart() {
     price.classList.add("cartItemPrice");
     item.appendChild(price);
 
-    item.innerHTML += `<input type="number" name="quantity" id="no-of-items" value="${data.quantity}" min="1" max="6" step="1">`;
+    item.innerHTML += `<input type="number" name="quantity" id="no-of-items" class="inpQuantity" data-itemName="${data.item.name}" value="${data.quantity}" min="1" max="10" step="1">`;
     item.innerHTML += `<button class="remove"><i class="fas fa-trash fa-2x"></i></button>`;
 
+    //------------------------------------- Legger til en anonym funksjon på antall-inputen som endrer quantity på riktig produkt i handlelista. --
+    item.querySelector("input.inpQuantity").addEventListener("input", function (e){
+        for (let i = 0; i < shoppingCart.length; i++) {
+            if (shoppingCart[i].item.name === this.getAttribute("data-itemName")){
+                shoppingCart[i].quantity = this.value;
+            };
+        };
+        storeShoppingCart();
+    });
+      
+      
     //------------------------------------ Legger til en anonym funksjon på søppelbøtteikonet som sletter hele produktet fra handlelista, og arrayen så det ikke vises på reload.
     item.querySelector("button.remove").addEventListener("click", function (e) {
       for (let i = 0; i < shoppingCart.length; i++) {
@@ -136,7 +149,7 @@ function loadShoppingCart() {
           shoppingCart.splice(i, 1);
           storeShoppingCart();
         }
-      }
+      };
       item.remove();
       printTotalPrice();
     });
