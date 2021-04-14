@@ -91,10 +91,13 @@ img {
   float: left;
   --gap: 0.5rem;
   margin-left: var(--gap);
+  outline: none;
 }
 
 .card a:hover,
-.card button:hover {
+.card button:hover, 
+.card a:focus,
+.card button:focus{
   background-color: white;
   color: #000;
   border: 1px solid black;
