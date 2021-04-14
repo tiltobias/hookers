@@ -136,6 +136,7 @@ function loadShoppingCart() {
             };
         };
         storeShoppingCart();
+        printTotalPrice();
     });
       
       
