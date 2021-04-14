@@ -178,8 +178,8 @@ function loadShoppingCart() {
                 shoppingCart[i].quantity = this.value;
             };
         };
-        storeShoppingCart();
         printTotalPrice();
+        storeShoppingCart();
     });
       
       
