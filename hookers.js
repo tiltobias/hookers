@@ -1,9 +1,10 @@
-//------------ Popup til Produktinfo --------------------------
+//------------ Lager konstantene til produktinfo som henter data fra html --------------------------
 
 const openModalButtons = document.querySelectorAll("[data-modal-target]");
 const closeModalButtons = document.querySelectorAll("[data-close-button]");
 const overlay = document.getElementById("overlay");
 
+//------------ Denne funksjonen henter produktinfo ----------------------
 openModalButtons.forEach((button) => {
   button.addEventListener("click", () => {
     const modal = button.parentNode.querySelector("#modal");
@@ -11,35 +12,37 @@ openModalButtons.forEach((button) => {
   });
 });
 
-if (overlay){
-      overlay.addEventListener("click", () => {
-      const modals = document.querySelectorAll(".modal.active");
-      modals.forEach((modal) => {
-        closeModal(modal);
-      });
+//------------ Denne funksjonen lukker produktinfo uten at man nødvendigvis trenger å trykke på X --------------------------
+
+if (overlay) {
+  overlay.addEventListener("click", () => {
+    const modals = document.querySelectorAll(".modal.active");
+    modals.forEach((modal) => {
+      closeModal(modal);
     });
-};
+  });
+}
 
-
+//------------ Denne funksjonen henter data for å lukke popupen --------------------------
 closeModalButtons.forEach((button) => {
   button.addEventListener("click", () => {
     const modal = button.closest(".modal");
     closeModal(modal);
   });
 });
-
+//------------ Denne funksjonen åpner produktinfo ----------------------
 function openModal(modal) {
   if (modal == null) return;
   modal.classList.add("active");
   overlay.classList.add("active");
 }
 
+//------------ Denne funksjonen lukker produktinfo ----------------------
 function closeModal(modal) {
   if (modal == null) return;
   modal.classList.remove("active");
   overlay.classList.remove("active");
 }
-
 
 //-------------------- definerer klasse for hvert produkt som selges i butikken, slik at hvert objekt ser likt ut -----------------
 class product {
@@ -76,8 +79,8 @@ let shoppingCart = [];
 
 //--------------------------------- Shortcut funksjoner for å lagre handlelista lokalt i nettleseren - Nødvendig for at handlelista skal overføres mellom html-filene.
 function storeShoppingCart() {
-    sessionStorage.setItem("shoppingCart", JSON.stringify(shoppingCart));
-    uploadShoppingCart();
+  sessionStorage.setItem("shoppingCart", JSON.stringify(shoppingCart));
+  uploadShoppingCart();
 }
 function fetchShoppingCart() {
   let storedCart = JSON.parse(sessionStorage.getItem("shoppingCart"));
@@ -118,28 +121,28 @@ addBtnEventlisteners();
 
 //------------------- Funksjonen finner hele produktet ved å gå utover i nestinga fra knappen. Finner dermed aktuell info om produktet ut i fra text-nodene til de forskjellige barnene.
 function addToCart(e) {
-    fetchShoppingCart();
+  fetchShoppingCart();
 
-    let card = e.srcElement.parentElement.parentElement;
+  let card = e.srcElement.parentElement.parentElement;
 
-    let name = card.querySelector("h3").innerHTML;
-    let price = card.querySelector(".price").innerHTML;
-    let image = card.querySelector("img").getAttribute("src");
+  let name = card.querySelector("h3").innerHTML;
+  let price = card.querySelector(".price").innerHTML;
+  let image = card.querySelector("img").getAttribute("src");
 
-    let item = new product(name, "", price, image);
-  
-    for (let i = 0; i < shoppingCart.length; i++) {
-        if (shoppingCart[i].item.name === item.name) {
-            shoppingCart[i].quantity++;
-            
-            storeShoppingCart();
-            return shoppingCart;
-        };
-    };
-    console.log(item);
-    shoppingCart.push(new order(item, 1));
+  let item = new product(name, "", price, image);
 
-    storeShoppingCart();
+  for (let i = 0; i < shoppingCart.length; i++) {
+    if (shoppingCart[i].item.name === item.name) {
+      shoppingCart[i].quantity++;
+
+      storeShoppingCart();
+      return shoppingCart;
+    }
+  }
+  console.log(item);
+  shoppingCart.push(new order(item, 1));
+
+  storeShoppingCart();
 }
 
 //------------------------------- Funksjonen skal kjøre når handlelista åpnes, slik at den oppdateres med riktige produkter.
@@ -172,17 +175,20 @@ function loadShoppingCart() {
     item.innerHTML += `<button class="remove"><i class="fas fa-trash fa-2x"></i></button>`;
 
     //------------------------------------- Legger til en anonym funksjon på antall-inputen som endrer quantity på riktig produkt i handlelista. --
-    item.querySelector("input.inpQuantity").addEventListener("input", function (e){
+    item
+      .querySelector("input.inpQuantity")
+      .addEventListener("input", function (e) {
         for (let i = 0; i < shoppingCart.length; i++) {
-            if (shoppingCart[i].item.name === this.getAttribute("data-itemName")){
-                shoppingCart[i].quantity = this.value;
-            };
-        };
+          if (
+            shoppingCart[i].item.name === this.getAttribute("data-itemName")
+          ) {
+            shoppingCart[i].quantity = this.value;
+          }
+        }
         printTotalPrice();
         storeShoppingCart();
-    });
-      
-      
+      });
+
     //------------------------------------ Legger til en anonym funksjon på søppelbøtteikonet som sletter hele produktet fra handlelista, og arrayen så det ikke vises på reload.
     item.querySelector("button.remove").addEventListener("click", function (e) {
       for (let i = 0; i < shoppingCart.length; i++) {
@@ -193,7 +199,7 @@ function loadShoppingCart() {
           shoppingCart.splice(i, 1);
           storeShoppingCart();
         }
-      };
+      }
       item.remove();
       printTotalPrice();
     });
@@ -207,17 +213,20 @@ function loadShoppingCart() {
 //----------------------------- Egen funksjon som summerer prisene på alle produktene i handlelista, slik summen kan oppdateres uten å gjenta mye kode.
 
 function printTotalPrice() {
-    const priceCont = document.getElementById("totalPrice");
-    let total = 0;
-    
-    for (i = 0; i < shoppingCart.length; i++){
-        let itemPrice = shoppingCart[i].item.price.replace("kr", "").split(" ").join("");
-        
-        total += +itemPrice * +shoppingCart[i].quantity;
-    };
-    
-    priceCont.innerHTML = total + " kr";
-};
+  const priceCont = document.getElementById("totalPrice");
+  let total = 0;
+
+  for (i = 0; i < shoppingCart.length; i++) {
+    let itemPrice = shoppingCart[i].item.price
+      .replace("kr", "")
+      .split(" ")
+      .join("");
+
+    total += +itemPrice * +shoppingCart[i].quantity;
+  }
+
+  priceCont.innerHTML = total + " kr";
+}
 
 //--------------------------------- Tidligere versjon av funksjonen som ikke regnet med kvantitet.----------------------
 /*function printTotalPrice() {
@@ -235,48 +244,43 @@ function printTotalPrice() {
   priceCont.innerHTML = totalPrice + " kr";
 }*/
 
-
-
 //----------------------------------------------------------- INNLOGGING RELATERTE FUNKSJONER---------------
 
 function checkSignIn() {
-    let localUserInfo = JSON.parse(sessionStorage.getItem("userInfo"));
-    if (localUserInfo) {
-        userInfo = localUserInfo;
-        txtSignIn.innerHTML = userInfo.username;
-    };
-};
+  let localUserInfo = JSON.parse(sessionStorage.getItem("userInfo"));
+  if (localUserInfo) {
+    userInfo = localUserInfo;
+    txtSignIn.innerHTML = userInfo.username;
+  }
+}
 checkSignIn();
-
-
 
 let dbUser = db.ref("userAccounts/" + userInfo.username);
 
 function uploadShoppingCart() {
-    if (userInfo.username) {
-        dbUser = db.ref("userAccounts/" + userInfo.username);
-    
-        let newObject = dbUser.child("shoppingCart");
-        newObject.set(JSON.stringify(shoppingCart));
-    };
-};
+  if (userInfo.username) {
+    dbUser = db.ref("userAccounts/" + userInfo.username);
+
+    let newObject = dbUser.child("shoppingCart");
+    newObject.set(JSON.stringify(shoppingCart));
+  }
+}
 
 function downloadShoppingCart() {
-    function getUserInfoHelper(snapshot) {
-        if (snapshot.key === userInfo.username) {
-            usernameExists = true;
-            userInfo = snapshot.val();
-        };
-    };
-    dbUserAccounts.on("child_added", getUserInfoHelper);
-    
-    if (userInfo.shoppingCart) {
-        shoppingCart = JSON.parse(userInfo.shoppingCart);
-    };
-    return shoppingCart;
-};
-downloadShoppingCart();
+  function getUserInfoHelper(snapshot) {
+    if (snapshot.key === userInfo.username) {
+      usernameExists = true;
+      userInfo = snapshot.val();
+    }
+  }
+  dbUserAccounts.on("child_added", getUserInfoHelper);
 
+  if (userInfo.shoppingCart) {
+    shoppingCart = JSON.parse(userInfo.shoppingCart);
+  }
+  return shoppingCart;
+}
+downloadShoppingCart();
 
 //--------------------- Lagrer alle butikkens produkter i ett objekt, slik at dette er letter å finne spesifike produkter enn i en array, og mer oversiktlig enn bare som individuelle variabler. ---
 /* ------------------ Vi valgte heller å legge inn produktene i html og lagde en egen funksjon for å hente denne dataen. Beholder koden i tilfelle det kan bli brukt i sprint 2.
