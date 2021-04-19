@@ -5,7 +5,7 @@ html {
   font-family: "Montserrat";
   max-width: 100%;
 }
-
+/* Beskriver hvordan navigasjonsbaren skal se ut*/
 nav > ul > li {
   display: inline-block;
 }
@@ -59,7 +59,7 @@ nav > ul > li > a {
 nav > ul > li > a:hover {
   color: #cb4335;
 }
-
+/* Beskriver hvordan nettsiden skal se ut*/
 section > h1 {
   font-size: 60px;
   margin: 20px 0 0 35px;
@@ -215,4 +215,3 @@ figcaption {
   margin: 0;
   text-transform: uppercase;
 }
-

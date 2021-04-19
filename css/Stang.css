@@ -1,3 +1,4 @@
+/* Beskriver hvordan produktene skal ligge og se ut*/
 html {
   margin: 0;
   padding: 0;
@@ -95,9 +96,9 @@ img {
 }
 
 .card a:hover,
-.card button:hover, 
+.card button:hover,
 .card a:focus,
-.card button:focus{
+.card button:focus {
   background-color: white;
   color: #000;
   border: 1px solid black;
@@ -194,6 +195,7 @@ figcaption {
   transition: 0.5s ease;
 }
 
+/* Beskriver popup utseendet*/
 *,
 *::after,
 *::before {
@@ -266,8 +268,3 @@ figcaption {
   margin: 0;
   text-transform: uppercase;
 }
-
-
-
-
-
